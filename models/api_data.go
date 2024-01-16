@@ -2,18 +2,14 @@ package models
 
 import (
 	"encoding/json"
-	//"fmt"
-	"groupie-tracker/controller"
 	"io/ioutil"
 	"log"
 	"net/http"
-
-	//"sort"
 	"html/template"
 	"os"
 	"strconv"
 	"strings"
-	"time"
+	
 )
 
 var artistTemp []BandInfo
@@ -95,7 +91,7 @@ func (self *ApiData) RootHandler(webpage http.ResponseWriter, request *http.Requ
 		:param request: the current request
 	*/
 	if request.URL.Path != "/" && request.URL.Path != "" {
-		controller.ServeFile(webpage, "404.html", nil)
+		ServeFile(webpage, "404.html", nil)
 		return
 	}
 
@@ -305,31 +301,6 @@ func (self *ApiData) RootHandler(webpage http.ResponseWriter, request *http.Requ
 	}
 }
 
-func KeepOnlyDuplicates(longarray []BandInfo, shorterarray []BandInfo) []BandInfo {
-	result := []BandInfo{}
-	allKeys := make(map[int]bool)
 
-	for _, element := range longarray {
-		allKeys[element.Id] = true
-	}
 
-	for _, element := range shorterarray {
-		if allKeys[element.Id] {
-			result = append(result, element)
-		}
-	}
 
-	return result
-}
-
-func (self *ApiData) WaitThenRefreshApi() {
-	/*
-		Method of ApiData
-		Loop forever, waits 24 hours then refresh the api and empty the caches
-	*/
-	for true {
-		time.Sleep(24 * time.Hour)
-		log.Printf("[INFO] - 30s since last cache update, refreshing the API.")
-		self.FeedApi()
-	}
-}
