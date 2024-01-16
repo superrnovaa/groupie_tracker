@@ -1,4 +1,4 @@
-# Groupie Tracker-filters
+# Groupie Tracker
 This is a web application written in golang tracking the [heroku api](https://groupietrackers.herokuapp.com/api/artists) that provides a lot of informations about musical bands.
 
 ## Installation
@@ -6,13 +6,13 @@ This is a web application written in golang tracking the [heroku api](https://gr
 Use ``git`` to install it from our repository.
 
 ```bash
-$ git clone https://learn.reboot01.com/git/tmearaj/groupie-tracker-filters.git
-$ cd groupie-tracker-filters
+$ git clone https://learn.reboot01.com/git/tmearaj/groupie_tracker.git
+$ cd groupie_tracker
 $ go build
 ```
 
 ## Usage
-(Make sure to be in the ``groupie-tracker-filters`` directory)
+(Make sure to be in the ``groupie_tracker`` directory)
 ```bash
 $ go run main.go
 ```
@@ -24,6 +24,9 @@ $ go run main.go
 
 ## Objectives
 
+- [x] Extract and display all bands data from the api.
+- [x] Manipulation and storage of data
+- [x] Json files and Format
 - [x] To the user filter the artists/bands that will be shown.
 - [x] To incorporate at least these four filters:
 
